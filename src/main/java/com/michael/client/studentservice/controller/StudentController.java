@@ -3,10 +3,13 @@
  */
 package com.michael.client.studentservice.controller;
 
+import io.swagger.annotations.Api;
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +21,13 @@ import com.michael.client.studentservice.model.Student;
  *
  */
 @RestController
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
     private Environment environment;
     
-	@RequestMapping(value = "/student/echoStudentName/{name}")
+	@GetMapping(value = "/echoStudentName/{name}")
 	public String echoStudentName(@PathVariable(name = "name") String name)
 	{
         int servingPort = Integer.parseInt(environment.getProperty("local.server.port"));        
@@ -31,7 +35,7 @@ public class StudentController {
 		+ new Date() + "at port - " + servingPort;
 	}
 
-	@RequestMapping(value = "/student/getStudentDetails/{name}")
+	@GetMapping(value = "/getStudentDetails/{name}")
 	public Student getStudentDetails(@PathVariable(name = "name") String name)
 	{
         int servingPort = Integer.parseInt(environment.getProperty("local.server.port"));
