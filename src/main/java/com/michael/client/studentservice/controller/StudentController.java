@@ -3,8 +3,6 @@
  */
 package com.michael.client.studentservice.controller;
 
-import io.swagger.annotations.Api;
-
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
